@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jibran | Developer Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jibran | Developer Portfolio</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-  <header>
-    <h1>Jibran's Projects</h1>
-    <p>Here’s everything I’ve built, broken, and fixed again.</p>
-  </header>
-
-  <main class="grid">
-    <!-- Project Cards -->
-    <div class="card">
-      <img src="Images/password-generator.jpg" alt="Simple Password Generator" />
-      <h2>Simple Password Generator</h2>
-      <p>A pure Python 3.13.2 tool that instantly generates strong, random passwords. No libraries. No nonsense.</p>
-      <a href="https://github.com/jibcamun/Simple-Password-Generator" target="_blank">View</a>
-    </div>
-
-    <div class="card">
-      <img src="Images/mincalc.jpg" alt="MinCalc" />
-      <h2>MinCalc</h2>
-      <p>MinCalc is a sleek, lightweight calculator built for quick and hassle-free day-to-day math. No clutter. Just clean design, clear output, and essential functions—right at your fingertips.</p>
-      <a href="https://github.com/jibcamun/MinCalc" target="_blank">View</a>
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Jibran. All projects are open for stalking.</p>
-  </footer>
+    <header class="heros">
+        <div class="nav-wrapper">
+            <nav>
+                <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+                <ul class="nav-list">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Contact</a></li>
+                    <li><a href="contact.html">Collab</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>    
+    <section class="hero">
+        <h1 class="hero__big">
+          JIBRAN
+          <span class="break">// Code. Visuals. Vibes.</span>
+        </h1>
+        <div class="parallax-container">
+          <div class="hero__labels">
+            <span class="label">DESIGN</span>
+            <span class="label">ART</span>
+            <span class="label">MOTION</span>
+            <span class="label active">3D</span>
+            <span class="label">UX</span>
+            <span class="label">UI</span>
+            <span class="label">WEB</span>
+          </div>
+        </div>
+        <div class="hero__intro">Developer. Visual Storyteller. Midnight Debugger.</div>
+    </section>
 </body>
-</html>
+<script>
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+      const nav = document.getElementById("nav-list");
+      nav.classList.toggle("active");
+    });
+    const labels = document.querySelectorAll('.label');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      labels.forEach((label, i) => {
+        label.style.transform = `translateY(${scrolled * (0.08 + i * 0.01)}px)`;
+      });
+    });
+  </script>
+</html>  
