@@ -1,39 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background: #0d1117;
-    color: #c9d1d9;
-  }
-  header, footer {
-    text-align: center;
-    padding: 2rem;
-    background-color: #161b22;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-  }
-  .card {
-    background: #1f2937;
-    border-radius: 10px;
+    background: linear-gradient(90deg, #fffedf, #ffefe0, #e0f1ff, #f1ffe0), url("https://assets.codepen.io/108082/Noise.png");
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.heros {
+    text-align: right;
+    margin: 1rem;
     padding: 1rem;
-    text-align: center;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  }
-  .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .card h2 {
-    margin: 0.5rem 0;
-  }
-  .card a {
-    color: #58a6ff;
+    position: relative;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    z-index: 100;
+}
+
+.nav-list {
+    vertical-align: middle;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.nav-list a {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: bolder;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: inherit;
     text-decoration: none;
-    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-list a:hover {
+    font-size: 1.65rem;
+    text-decoration: underline;
+    transition: 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        background-color: #ffffffdd;
+        position: absolute;
+        top: 4rem;
+        right: 1.5rem;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+}
+
+.nav-wrapper {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeSlideIns 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeSlideIns {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 8vw;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__big {
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0 0 2rem 0;
+    color: #151515;
+    position: relative;
+    z-index: 2;
+    /* Animation */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeSlideIn 1s cubic-bezier(.77,0,.18,1) 0.2s forwards;
+  }
+  .hero__big .break {
+    display: block;
+  }
+
+  .hero__labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+    /* Animation */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeSlideIn 1s cubic-bezier(.77,0,.18,1) 0.7s forwards;
+  }
+  .label {
+    padding: 0.4em 1.2em;
+    border: 2px solid #222;
+    border-radius: 2em;
+    font-size: 1.1rem;
+    background: rgba(255,255,255,0.8);
+    font-weight: 500;
+    color: #222;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.04);
+    transition: transform 0.2s cubic-bezier(.77,0,.18,1);
+    will-change: transform;
+    cursor: pointer;
+    user-select: none;
+  }
+  .label.active {
+    background: #151515;
+    color: #fff;
+    border-color: #151515;
+  }
+
+  .hero__intro {
+    font-size: 1.7rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #1e6e5e;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeSlideIn 1s cubic-bezier(.77,0,.18,1) 1.2s forwards;
+    z-index: 2;
+    position: relative;
+  }
+
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Parallax container for labels */
+  .parallax-container {
+    perspective: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
   }
