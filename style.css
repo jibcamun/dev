@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
+* {
+    cursor: none;
+}
+
 body {
     font-family: sans-serif;
     margin: 0;
@@ -10,6 +14,10 @@ body {
     background-attachment: fixed;
     overflow-x: hidden;
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
 
 .heros {
     text-align: right;
@@ -54,8 +62,30 @@ body {
     transition: 0.2s ease-in-out;
 }
 
+@media screen and (max-width: 480px) {
+    .ribbon {
+      display: none;
+    }
+  }
+  
+
 /* Mobile nav drawer */
 @media screen and (max-width: 768px) {
+    .ribbon {
+        top: 1rem;
+        left: -2rem;
+        transform: rotate(-10deg);
+        padding: 0.3rem 1.5rem;
+        font-size: 1rem;
+        border-top: #151515 solid 2px;
+        border-bottom: #151515 solid 2px;
+      }
+    
+      .ribbon p {
+        animation-duration: 15s; /* Slower scroll on small screens */
+        white-space: nowrap;
+      }
+      
     .menu-toggle {
       display: block;
       font-size: 2.5rem;
@@ -99,16 +129,22 @@ body {
       color: #151515;
       transition: color 0.2s ease-in-out;
     }
-  
-    .nav-list li a:hover {
-      color: #1e6e5e;
-      text-decoration: underline;
+
+    .nav-close {
+        display: block;
+        font-size: 2.5rem;
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        cursor: pointer;
+        z-index: 9999;
     }
   }
   
 
 .nav-wrapper {
     opacity: 0;
+    height: 1rem;
     transform: translateY(-20px);
     animation: fadeSlideIns 0.8s ease-out forwards;
     animation-delay: 0.3s;
@@ -188,7 +224,12 @@ body {
     font-size: 1.7rem;
     font-weight: 400;
     letter-spacing: 0.06em;
-    color: #1e6e5e;
+    background-color: white;
+    padding: 0.5rem;
+    border-top: black solid 4px;
+    border-bottom: black solid 4px;
+    width: 100%;
+    color: black;
     opacity: 0;
     transform: translateY(40px);
     animation: fadeSlideIn 1s cubic-bezier(.77,0,.18,1) 1.2s forwards;
@@ -218,3 +259,79 @@ body {
   .nav-list {
     z-index: 999;
 }
+
+.nav-close {
+    display: none;
+    font-size: 4rem;
+    cursor: pointer;
+    position: absolute;
+    top: 2.5rem;
+    right: 3.5rem;
+    color: #151515;
+    z-index: 10000;
+  }
+  
+  .nav-overlay.active .nav-close {
+    display: block;
+  }
+  
+  .ribbon {
+    position: absolute;
+    top: 2rem;
+    left: -3rem;
+    background: white;
+    border-top: #151515 solid 4px;
+    border-bottom: #151515 solid 4px;
+    color: black;
+    padding: 0.5rem 3rem;
+    transform: rotate(-15deg);
+    font-weight: bold;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+  
+  
+  @keyframes textLoop {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+
+  .ribbon p {
+    margin: 0;
+    animation: textLoop 10s linear infinite;
+  }
+
+  .cursor,
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+}
+
+.cursor {
+    width: 8px;
+    height: 8px;
+    background: #151515;
+    mix-blend-mode: difference;
+    z-index: 10000;
+  }
+  
+  .cursor-follower {
+    width: 30px;
+    height: 30px;
+    background: rgba(21, 21, 21, 0.1);
+    border: 2px solid #151515;
+    transition: transform 0.1s ease-out;
+  }
+  
