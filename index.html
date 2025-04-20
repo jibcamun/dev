@@ -9,17 +9,18 @@
   </head>
   <body>
     <header class="heros">
-      <div class="nav-wrapper">
-        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-        <nav>
+        <div class="nav-wrapper">
+          <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        </div>
+        <div class="nav-overlay" id="nav-overlay">
           <ul class="nav-list" id="nav-list">
             <li><a href="about.html">About</a></li>
             <li><a href="projects.html">Contact</a></li>
             <li><a href="contact.html">Collab</a></li>
           </ul>
-        </nav>
-      </div>
+        </div>
     </header>
+      
 
     <section class="hero">
       <h1 class="hero__big">
@@ -43,23 +44,31 @@
     </section>
 
     <script>
-      // Burger Menu Toggle
-      const toggle = document.getElementById("menu-toggle");
-      const navList = document.getElementById("nav-list");
-
-      toggle.addEventListener("click", () => {
-        console.log("Menu clicked");
-        navList.classList.toggle("active");
-      });
-
-      // Parallax on scroll
-      const labels = document.querySelectorAll(".label");
-      window.addEventListener("scroll", () => {
-        const scrolled = window.scrollY;
-        labels.forEach((label, i) => {
-          label.style.transform = `translate3d(0, ${scrolled * (0.08 + i * 0.01)}px, 0)`;
+        const toggle = document.getElementById("menu-toggle");
+        const navOverlay = document.getElementById("nav-overlay");
+        const navList = document.getElementById("nav-list");
+      
+        // Open/close mobile menu
+        toggle.addEventListener("click", () => {
+          navOverlay.classList.toggle("active");
         });
-      });
+      
+        // Close on nav link click
+        document.querySelectorAll(".nav-list a").forEach(link => {
+          link.addEventListener("click", () => {
+            navOverlay.classList.remove("active");
+          });
+        });
+      
+        // Parallax Labels
+        const labels = document.querySelectorAll(".label");
+        window.addEventListener("scroll", () => {
+          const scrolled = window.scrollY;
+          labels.forEach((label, i) => {
+            label.style.transform = `translate3d(0, ${scrolled * (0.08 + i * 0.01)}px, 0)`;
+          });
+        });
     </script>
+      
   </body>
 </html>
