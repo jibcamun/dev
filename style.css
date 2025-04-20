@@ -118,6 +118,7 @@ body {
   }
   .hero__big .break {
     display: block;
+    font-size: clamp(1rem, 8vw, 6rem);
   }
 
   .hero__labels {
