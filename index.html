@@ -1,55 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jibran | Developer Portfolio</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon">
-    </head>
-    <body>
-        <header class="heros">
-            <div class="nav-wrapper">
-                <nav>
-                    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-                    <ul class="nav-list">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Contact</a></li>
-                        <li><a href="contact.html">Collab</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>    
-        <section class="hero">
-            <h1 class="hero__big">
-            JIBRAN
-            <span class="break">// Code. Visuals. Vibes.</span>
-            </h1>
-            <div class="parallax-container">
-            <div class="hero__labels">
-                <span class="label">PYTHON</span>
-                <span class="label">ARTIFICIAL INTELLIGENCE</span>
-                <span class="label">WEB</span>
-                <span class="label active">EDITING</span>
-                <span class="label">BUILD</span>
-                <span class="label">GRIND</span>
-                <span class="label">DEPLOY</span>
-            </div>
-            </div>
-            <div class="hero__intro">Developer. Visual Storyteller. Midnight Debugger.</div>
-        </section>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jibran | Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <header class="heros">
+      <div class="nav-wrapper">
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <nav>
+          <ul class="nav-list" id="nav-list">
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Contact</a></li>
+            <li><a href="contact.html">Collab</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1 class="hero__big">
+        JIBRAN
+        <span class="break">// Code. Visuals. Vibes.</span>
+      </h1>
+      <div class="parallax-container">
+        <div class="hero__labels">
+          <span class="label">PYTHON</span>
+          <span class="label">AI</span>
+          <span class="label">WEB</span>
+          <span class="label active">EDITING</span>
+          <span class="label">BUILD</span>
+          <span class="label">GRIND</span>
+          <span class="label">DEPLOY</span>
+        </div>
+      </div>
+      <div class="hero__intro">
+        Developer. Visual Storyteller. Midnight Debugger.
+      </div>
+    </section>
+
     <script>
-        document.getElementById("menu-toggle").addEventListener("click", function () {
-            const nav = document.querySelector(".nav-list");
-            nav.classList.toggle("active");
+      // Burger Menu Toggle
+      const toggle = document.getElementById("menu-toggle");
+      const navList = document.getElementById("nav-list");
+
+      toggle.addEventListener("click", () => {
+        console.log("Menu clicked");
+        navList.classList.toggle("active");
+      });
+
+      // Parallax on scroll
+      const labels = document.querySelectorAll(".label");
+      window.addEventListener("scroll", () => {
+        const scrolled = window.scrollY;
+        labels.forEach((label, i) => {
+          label.style.transform = `translate3d(0, ${scrolled * (0.08 + i * 0.01)}px, 0)`;
         });
-        const labels = document.querySelectorAll('.label');
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            labels.forEach((label, i) => {
-                label.style.transform = `translateY(${scrolled * (0.08 + i * 0.01)}px)`;
-            });
-        });
+      });
     </script>
-</html>  
+  </body>
+</html>
