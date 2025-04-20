@@ -70,6 +70,13 @@ body {
     .ribbon p {
       display: none;
     }
+
+    .cursor {
+        display: none;
+    }
+    .cursor-follower {
+        display: none;
+    }
   }
   
 
