@@ -1,3 +1,83 @@
+.contact {
+    padding: 4rem 8vw;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #151515;
+}
+
+.contact__title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+}
+
+.contact__intro {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+.contact__form label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.contact__form input, .contact__form textarea {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 2px solid #222;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact__form textarea {
+    resize: vertical;
+}
+
+.contact__form button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #151515;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact__form button:hover {
+    background-color: #333;
+}
+
+/* Mobile-friendly styles for the contact form */
+@media screen and (max-width: 768px) {
+    .contact__title {
+        font-size: 2rem;
+    }
+
+    .contact__form {
+        width: 90%;
+    }
+
+    .contact__form button {
+        width: 100%;
+    }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
 * {
@@ -493,7 +573,20 @@ html {
     visibility: hidden;
   }
   
-  
+  #form-status {
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+#form-status p {
+    padding: 10px;
+    border-radius: 20px;
+    border: black dashed 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+}
+
 .custom-cursor {
   width: 22px;
   height: 22px;
@@ -503,4 +596,8 @@ html {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }

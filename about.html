@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="hide-scrollbar">
-<html lang="en" class="custom-cursor">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Jibran | Developer Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="about.css  " />
     <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
   </head>
   <body>
@@ -24,7 +23,7 @@
         </div>
         <div class="nav-overlay" id="nav-overlay">
           <ul class="nav-list" id="nav-list">
-            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="collab.html">Collab</a></li>
           </ul>
@@ -33,23 +32,47 @@
     </header>
       
 
-    <section class="hero">
-      <h1 class="hero__big">
-        JIBRAN
-        <span class="break">// Code. Visuals. Vibes.</span>
-      </h1>
-      <div class="parallax-container">
-        <div class="hero__labels">
-          <span class="label">PYTHON</span>
-          <span class="label">AI</span>
-          <span class="label">WEB</span>
-          <span class="label active">EDITING</span>
-          <span class="label">BUILD</span>
-          <span class="label">GRIND</span>
-          <span class="label">DEPLOY</span>
+    <section class="about">
+        <div class="about__header" data-parallax-load>
+            <h1>About Me</h1>
+            <p>Welcome to my world of code, visuals, and creative exploration.</p>
         </div>
-      </div>    
+
+        <div class="about__content">
+            <div class="bio" data-parallax-load>
+                <h2>Who I Am</h2>
+                <p>I'm Jibran, a developer with a passion for coding, building, and bringing ideas to life. With experience across Python, web development, AI, and video editing, I combine technical skills with creative flair to craft innovative solutions.</p>
+                <p>I'm always exploring new technologies and looking to challenge myself with projects that push the limits of what can be achieved with code. When I'm not coding, you can find me diving deep into movies, music, or working on creative visuals.</p>
+            </div>
+
+            <div class="skills" data-parallax-load>
+                <h2>My Skills</h2>
+                <ul>
+                    <li>Python & AI Development</li>
+                    <li>Web Development (HTML, CSS, JavaScript, React)</li>
+                    <li>Video Editing & Motion Graphics</li>
+                    <li>Music Production & Sound Design</li>
+                    <li>Creative Problem Solving</li>
+                </ul>
+            </div>
+
+            <div class="tech-stack" data-parallax-load>
+                <h2>Technologies I Work With</h2>
+                <div class="labels">
+                    <span class="label">Python</span>
+                    <span class="label">Java</span>
+                    <span class="label">AI</span>
+                    <span class="label">Web Development</span>
+                    <span class="label">Video Editing</span>
+                    <span class="label">Machine Learning</span>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <div class="extended-about" data-parallax-load>
+        <i><h2>"Life is either a daring adventure or nothing."</h2></i>
+    </div>
 
     <script>
         const toggle = document.getElementById("menu-toggle");
@@ -73,15 +96,6 @@
             navOverlay.classList.remove("active");
           });
         });
-      
-        // Parallax Labels
-        const labels = document.querySelectorAll(".label");
-        window.addEventListener("scroll", () => {
-          const scrolled = window.scrollY;
-          labels.forEach((label, i) => {
-            label.style.transform = `translate3d(0, ${scrolled * (0.08 + i * 0.01)}px, 0)`;
-          });
-        });
 
         const cursor = document.querySelector(".cursor");
         const follower = document.querySelector(".cursor-follower");
@@ -102,6 +116,22 @@
             document.body.classList.remove("loading");
         });
 
+        window.addEventListener("load", () => {
+        // Loader fade out
+        const loader = document.getElementById("loader");
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+        document.body.classList.remove("loading");
+
+        // Parallax text entrance
+        const parallaxElements = document.querySelectorAll("[data-parallax-load]");
+        parallaxElements.forEach((el, index) => {
+            setTimeout(() => {
+            el.classList.add("loaded");
+            }, 300 + index * 200); // staggered entrance
+        });
+        });
+
         const cursors = document.createElement("img");
 cursors.src = "cursor.png"; // make sure the name matches your uploaded file
 cursors.classList.add("custom-cursor");
@@ -112,28 +142,7 @@ document.addEventListener("mousemove", (e) => {
   cursors.style.left = `${e.clientX}px`;
 });
 
-    </script>
-    
-    <section class="projects">
-        <h2 class="projects__title">Projects</h2>
-        <div class="grid">
-          <!-- Project Cards -->
-          <div class="card">
-            <img src="Images/password-generator.jpg" alt="Simple Password Generator" />
-            <h3>Simple Password Generator</h3>
-            <p>A pure Python 3.13.2 tool that instantly generates strong, random passwords. No libraries. No nonsense.</p>
-            <a href="https://github.com/jibcamun/Simple-Password-Generator" target="_blank">View</a>
-          </div>
-      
-          <div class="card">
-            <img src="Images/mincalc.jpg" alt="MinCalc" />
-            <h3>MinCalc</h3>
-            <p>MinCalc is a sleek, lightweight calculator built for quick and hassle-free day-to-day math. No clutter. Just clean design, clear output, and essential functions—right at your fingertips.</p>
-            <a href="https://github.com/jibcamun/MinCalc" target="_blank">View</a>
-          </div>
-        </div>
-      </section>
-      
+    </script>         
 
     <footer class="footer">
         <p>&copy; 2025 Jibran. All projects are open for stalking.</p>

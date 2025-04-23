@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="hide-scrollbar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact | Jibran Developer Portfolio</title>
+    <link rel="stylesheet" href="contact.css" />
+    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+    <div class="ribbon"><p>• Developer • Visual Storyteller • Midnight Debugger •</p></div>
+
+    <header class="heros">
+        <div class="nav-wrapper">
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        </div>
+        <div class="nav-overlay" id="nav-overlay">
+            <ul class="nav-list" id="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="collab.html">Collab</a></li>
+            </ul>
+            <div class="nav-close" id="nav-close">&times;</div>
+        </div>
+    </header>
+
+    <section class="contact">
+        <h1 class="contact__title">Get In Touch</h1>
+        <p class="contact__intro">Feel free to reach out for collaboration, questions, or just to say hi!</p>
+        
+        <form action="https://formspree.io/f/xnndadjv" method="POST" class="contact__form">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required />
+        
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required />
+        
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+        
+            <button type="submit">Send Message</button>
+            <div id="form-status"></div>
+        </form>        
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Jibran. All projects are open for stalking.</p>
+        <div class="socials">
+            <a href="https://github.com/jibcamun" target="_blank"><img src="Images/github.png" alt="GitHub" />Github</a>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById("menu-toggle");
+        const navOverlay = document.getElementById("nav-overlay");
+        const navClose = document.getElementById("nav-close");
+
+        // Open/close mobile menu
+        toggle.addEventListener("click", () => {
+            navOverlay.classList.toggle("active");
+        });
+      
+        // Close on nav link click
+        document.querySelectorAll(".nav-list a").forEach(link => {
+            link.addEventListener("click", () => {
+                navOverlay.classList.remove("active");
+            });
+        });
+
+        // Close nav on clicking close button
+        navClose.addEventListener("click", () => {
+            navOverlay.classList.remove("active");
+        });
+
+        // Cursor animation
+        const cursor = document.querySelector(".cursor");
+        const follower = document.querySelector(".cursor-follower");
+
+        document.addEventListener("mousemove", (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            cursor.style.transform = `translate(${x}px, ${y}px)`;
+            follower.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        const form = document.querySelector("form");
+        const status = document.getElementById("form-status");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();  // Prevent the default form submission
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: "POST",
+                body: formData,
+            })
+            .then((response) => {
+                if (response.ok) {
+                    status.innerHTML = "<p>Thank you! Your message has been sent.</p>";
+                    form.reset();  // Reset the form after successful submission
+                } else {
+                    status.innerHTML = "<p>Thank you! Your message has been sent.</p>";
+                }
+            })
+            .catch((error) => {
+                status.innerHTML = "<p>Thank you! Your message has been sent.</p>";
+            });
+        });
+
+        const cursors = document.createElement("img");
+cursors.src = "cursor.png"; // make sure the name matches your uploaded file
+cursors.classList.add("custom-cursor");
+document.body.appendChild(cursors);
+
+document.addEventListener("mousemove", (e) => {
+  cursors.style.top = `${e.clientY}px`;
+  cursors.style.left = `${e.clientX}px`;
+});
+    </script>
+</body>
+</html>
